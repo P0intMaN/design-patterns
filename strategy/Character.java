@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Set;
 
 public abstract class Character {
-    private String type;
+    private final String type = "Character";
     private String name;
     
     private final List<String> firstNameList = List.of(
@@ -15,7 +15,7 @@ public abstract class Character {
     );
 
     private final List<String> secondNameList = List.of(
-        "Achilles", "Beowulf", "Cuchulainn", " Leonidas", "Musashi", 
+        "Achilles", "Beowulf", "Cuchulainn", "Leonidas", "Musashi", 
         "Ragnar", "Siegfried", "Xerxes", "Arthur", "Genghis", 
         "Hannibal", "Spartacus", "Ajax", "Galahad", "Attila", 
         "Boudica", "Gerard", "Roland", "Sun", "Vercingetorix"
@@ -38,15 +38,21 @@ public abstract class Character {
     // a random character name generator
     public String generateRandomName() {
         int maximumPossibleNames = firstNameList.size() * secondNameList.size();
+        String generatedName;
 
         if (generatedNames.size() >= maximumPossibleNames) {
-            throw new IllegalStateException("All possible combinations of numbers exhausted. Please provide a name for the character.");
+            throw new IllegalStateException("All possible combinations of character names are exhausted. Please provide a name for the character.");
         }
 
-        String generatedName = firstNameList.get(random.nextInt(firstNameList.size()))
+        do {
+
+        
+                generatedName = firstNameList.get(random.nextInt(firstNameList.size()))
                                     .concat(
                                         secondNameList.get(random.nextInt(secondNameList.size()))
                                     );
+        } while (generatedNames.contains(generatedName));
+
         System.out.println(generatedName);
         return generatedName;
         
@@ -55,9 +61,6 @@ public abstract class Character {
     // getters and setters
     public String getType() {
         return type;
-    }
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getName() {
