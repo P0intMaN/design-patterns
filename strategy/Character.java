@@ -6,6 +6,8 @@ import java.util.Set;
 public abstract class Character {
     private final String type = "Character";
     private String name;
+
+    private WeaponsInterface weaponsInterface;
     
     private final List<String> firstNameList = List.of(
     "Ancient", "Brazen", "Celestial", "Dauntless", "Ethereal", 
@@ -32,8 +34,16 @@ public abstract class Character {
         }
 
         setName(name);
+        System.out.println(String.format("A %s (%s) has been spawned", getType(), getName()));
     }
 
+    public void useWeapon() {
+        weaponsInterface.damage(this);
+    }
+
+    public void setWeapon( WeaponsInterface weapon) {
+        this.weaponsInterface = weapon;
+    }
 
     // a random character name generator
     public String generateRandomName() {
@@ -53,7 +63,6 @@ public abstract class Character {
                                     );
         } while (generatedNames.contains(generatedName));
 
-        System.out.println(generatedName);
         return generatedName;
         
     }
@@ -66,6 +75,7 @@ public abstract class Character {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
