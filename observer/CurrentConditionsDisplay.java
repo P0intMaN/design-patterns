@@ -16,6 +16,8 @@ public class CurrentConditionsDisplay implements ObserverInterface, DisplayInter
         this.temp = temp;
         this.humidity = humidity;
         this.pressure = pressure;
+
+        display();
     }
 
     @Override

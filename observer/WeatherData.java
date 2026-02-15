@@ -25,7 +25,7 @@ public class WeatherData implements SubjectInterface {
     }
 
     public void notifyObservers() {
-        for (int i = 0 ; i <= this.observers.size(); i++) {
+        for (int i = 0 ; i < this.observers.size(); i++) {
             ObserverInterface observer = (ObserverInterface) this.observers.get(i);
             observer.update(this.temp, this.humidity, this.pressure);
         }
