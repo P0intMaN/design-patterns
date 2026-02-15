@@ -25,5 +25,4 @@ public class CurrentConditionsDisplay implements ObserverInterface, DisplayInter
         System.out.println(String.format("Current Conditions: %sF degress, %s humidity", this.temp, this.humidity));
     }
 
-
 }
