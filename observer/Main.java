@@ -3,8 +3,9 @@ public class Main {
         WeatherData weatherData = new WeatherData();
 
         CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData); // registered to weatherdata subject
+        HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData); // registered to weatherdata subject
 
         weatherData.setMeasurements(80, 65, 30.4f);
-        weatherData.setMeasurements(82, 70, 29.2f);
+        weatherData.setMeasurements(62, 70, 29.2f);
     }
 }
